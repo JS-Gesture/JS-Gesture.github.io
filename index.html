@@ -3,6 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
     <title></title>
   </head>
   <body>
@@ -73,24 +74,19 @@
     // console.log(results[0]);
 
     label = results[0].label + ' ' + (Math.round(results[0].confidence * 100) / 100)*100 + '%';
-      if(y > 0 && y < 2000)
-      {
-    if(results[0].label === 'up')
+    if(y > 0 && results[0].label === 'up')
       y-=5
-    else if(results[0].label === 'down')
+    else if(y < 2000 && results[0].label === 'down')
         y+=5
-      }
-    if(x > 0 && x < 2000)
-    {
-     if(results[0].label === 'right')
+
+     else if(x < 2000 && results[0].label === 'right')
         x+=5
-    else if(results[0].label === 'left')
+    else if(x > 0 && results[0].label === 'left')
          x-=5
-       }
+
     // Classifiy again!
     classifyVideo();
   }
 </script>
   </body>
 </html>
-
